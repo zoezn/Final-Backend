@@ -89,3 +89,16 @@
         </p>
       </li>
     </ul>
+      <h3>Requerimientos técnicos</h3>
+    <p>La aplicación debe ser desarrollada en diseño orientado a paquetes:</p>
+    <ul type="disc">
+      <li><b> Capa/dominio de entidades de negocio. </b></li>
+      <li>
+        <b> Capa de acceso a datos (base de datos): </b>es la base de datos de
+        nuestro sistema. Podrás utilizar cualquier base de datos relacional
+        modelado a través de un modelo entidad-relación, como H2 o MySQL, o no
+        relacional, como MongoDB.
+      </li>
+      <li><b> Capa/dominio service. </b></li>
+      <li><b> Capa/dominio handler. </b></li>
+    </ul>
