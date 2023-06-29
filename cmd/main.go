@@ -19,7 +19,7 @@ func main() {
 
 	repo := dentista.NewRepository(storage)
 	service := dentista.NewService(repo)
-	productHandler := handler.NewProductHandler(service)
+	productHandler := handler.NewDentistaHandler(service)
 
 	r := gin.Default()
 
