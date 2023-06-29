@@ -1,18 +1,1 @@
-[
-  {
-    "id": 1,
-    "apellido": "gutierrez",
-    "nombre": "maria",
-    "matricula": "asd123"
-  },
-  {
-    "id": 2,
-    "apellido": "alvarez",
-    "nombre": "maria",
-    "matricula": "123123123123"
-  },
-  { "id": 3, "apellido": "sanchez", "nombre": "maria", "matricula": "zxc222" },
-  { "id": 4, "apellido": "jimenez", "nombre": "zoe", "matricula": "888888888" },
-  { "id": 5, "apellido": "jimenez", "nombre": "zoe", "matricula": "8" },
-  { "id": 6, "apellido": "jimenez", "nombre": "zoe", "matricula": "82" }
-]
+[{"id":1,"apellido":"gutierrez","nombre":"maria","matricula":"asd123"},{"id":2,"apellido":"alvarez","nombre":"maria","matricula":"123123123123"},{"id":3,"apellido":"sanchez","nombre":"maria","matricula":"zxc222"},{"id":4,"apellido":"jimenez","nombre":"zoe","matricula":"888888888"},{"id":5,"apellido":"jimenez","nombre":"zoe","matricula":"8"},{"id":6,"apellido":"jimenez","nombre":"zoe","matricula":"82"},{"id":7,"apellido":"jimenez","nombre":"zoe","matricula":"a"},{"id":8,"apellido":"jimenez","nombre":"zoe","matricula":"829"}]

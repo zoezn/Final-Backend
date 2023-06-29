@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -17,21 +18,33 @@ func main() {
 	}
 	storage := store.NewJsonStore("./dentistas.json")
 
+	db, err := sql.Open("mysql", "user1:secret_password@/my_db")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	errPing := db.Ping()
+	if errPing != nil {
+		panic(errPing.Error())
+	}
+
+	// storage := store.SqlStore{db}
+
 	repo := dentista.NewRepository(storage)
 	service := dentista.NewService(repo)
-	productHandler := handler.NewDentistaHandler(service)
+	dentistaHandler := handler.NewDentistaHandler(service)
 
 	r := gin.Default()
 
 	r.GET("/ping", func(c *gin.Context) { c.String(200, "pong") })
-	r.GET("/hola", func(c *gin.Context) { c.String(200, "hola mundo :p") })
-	products := r.Group("/products")
+	dentistas := r.Group("/dentistas")
 	{
-		products.GET(":id", productHandler.GetByID())
-		products.POST("", productHandler.Post())
-		products.DELETE(":id", productHandler.Delete())
-		products.PATCH(":id", productHandler.Patch())
-		products.PUT(":id", productHandler.Put())
+		dentistas.GET(":id", dentistaHandler.GetByID())
+		dentistas.POST("", dentistaHandler.Post())
+		dentistas.DELETE(":id", dentistaHandler.Delete())
+		dentistas.PATCH(":id", dentistaHandler.Patch())
+		dentistas.PUT(":id", dentistaHandler.Put())
 	}
 
 	r.Run(":8080")
