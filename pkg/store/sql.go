@@ -52,21 +52,29 @@ func (s *SqlStore) Create(product domain.Dentista) error {
 	return nil
 }
 
-// func (s *SqlStore) Exist(codeValue string) bool {
-// 	var exist bool
-// 	var id int
+func (s *SqlStore) Update(product domain.Dentista) error {
+	return nil
+}
 
-// 	query := "SELECT id FROM dentistas WHERE code_value = ?;"
-// 	row := s.DB.QueryRow(query, id)
-// 	err := row.Scan(&id)
-// 	if err != nil {
-// 		return exist
-// 	}
+func (s *SqlStore) Delete(id int) error {
+	return nil
+}
 
-// 	if id > 0 {
-// 		exist = true
-// 	}
+func (s *SqlStore) Exists(codeValue string) bool {
+	var exist bool
+	var id int
 
-// 	return exist
+	query := "SELECT id FROM dentistas WHERE code_value = ?;"
+	row := s.DB.QueryRow(query, id)
+	err := row.Scan(&id)
+	if err != nil {
+		return exist
+	}
 
-// }
+	if id > 0 {
+		exist = true
+	}
+
+	return exist
+
+}

@@ -1,0 +1,10 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API para sistema odontologico. Administra dentistas, pacientes y turnos.",
+        "title": "Proyecto Final Back End III",
+        "contact": {},
+        "version": "1.0.0"
+    },
+    "paths": {}
+}

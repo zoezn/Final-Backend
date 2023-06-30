@@ -2,23 +2,26 @@ package main
 
 import (
 	"database/sql"
-	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/zoezn/Final-Backend/cmd/server/handler"
 	"github.com/zoezn/Final-Backend/internal/dentista"
 	"github.com/zoezn/Final-Backend/pkg/store"
 )
 
+// @title Proyecto Final Back End III
+// @version 1.0.0
+// @description API para sistema odontologico. Administra dentistas, pacientes y turnos.
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error al intentar cargar archivo .env")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error al intentar cargar archivo .env")
+	// }
 	// storage := store.NewJsonStore("./dentistas.json")
 
-	db, err := sql.Open("mysql", "user1:secret_password@/my_db")
+	// db, err := sql.Open("mysql", "user1:secret_password@/my_db")
+	db, err := sql.Open("mysql", "root:root@/final_go")
 
 	if err != nil {
 		panic(err.Error())

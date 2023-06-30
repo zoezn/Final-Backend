@@ -23,7 +23,10 @@ func NewDentistaHandler(s dentista.Service) *dentistaHandler {
 	}
 }
 
-// Get obtiene un producto por id
+// BuscarPorID godoc
+// @Summary buscar por id
+// @Tags Dentistas
+// @Description obtiene un dentista por id
 func (h *dentistaHandler) GetByID() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		idParam := c.Param("id")

@@ -1,0 +1,7 @@
+info:
+  contact: {}
+  description: API para sistema odontologico. Administra dentistas, pacientes y turnos.
+  title: Proyecto Final Back End III
+  version: 1.0.0
+paths: {}
+swagger: "2.0"
