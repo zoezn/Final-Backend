@@ -2,6 +2,7 @@ package store
 
 import (
 	"database/sql"
+	"fmt"
 
 	"github.com/zoezn/Final-Backend/internal/domain"
 )
@@ -10,38 +11,45 @@ type SqlStore struct {
 	DB *sql.DB
 }
 
-func (s *SqlStore) Read(id int) (*domain.Dentista, error) {
+func NewSqlStore(db *sql.DB) StoreInterface {
+	return &SqlStore{
+		DB: db,
+	}
+}
+
+func (s *SqlStore) Read(id int) (domain.Dentista, error) {
 	var productReturn domain.Dentista
 
 	query := "SELECT * FROM dentistas WHERE id = ?;"
 	row := s.DB.QueryRow(query, id)
 	err := row.Scan(&productReturn.Id, &productReturn.Nombre, &productReturn.Apellido, &productReturn.Matricula)
 	if err != nil {
-		return nil, err
+		return domain.Dentista{}, err
 	}
-	return &productReturn, nil
+	return productReturn, nil
 }
 
-func (s *SqlStore) Create(product domain.Dentista) (*domain.Dentista, error) {
+func (s *SqlStore) Create(product domain.Dentista) error {
 	query := "INSERT INTO dentistas (Apellido, Nombre, Matricula) VALUES (?, ?, ?);"
 	stmt, err := s.DB.Prepare(query)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	res, err := stmt.Exec(product.Apellido, product.Nombre, product.Matricula)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	_, err = res.RowsAffected()
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	lid, _ := res.LastInsertId()
 	product.Id = int(lid)
-	return &product, nil
+	fmt.Println(product)
+	return nil
 }
 
 // func (s *SqlStore) Exist(codeValue string) bool {

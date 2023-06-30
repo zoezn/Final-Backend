@@ -16,7 +16,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Error al intentar cargar archivo .env")
 	}
-	storage := store.NewJsonStore("./dentistas.json")
+	// storage := store.NewJsonStore("./dentistas.json")
 
 	db, err := sql.Open("mysql", "user1:secret_password@/my_db")
 
@@ -30,6 +30,7 @@ func main() {
 	}
 
 	// storage := store.SqlStore{db}
+	storage := store.NewSqlStore(db)
 
 	repo := dentista.NewRepository(storage)
 	service := dentista.NewService(repo)
